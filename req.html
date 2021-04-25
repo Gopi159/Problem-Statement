@@ -1,0 +1,35 @@
+<!-- Algorithm for returning value of nested object when key is passed as string in function parameter-->
+<!-- 1.write a function with two parameters one parameter as whole object and other as a string
+2.Assigning object(parameter) to new variable(lets take k)
+3.Use Split() method to convert string as a new array
+4.Create a for() loop to iterate through the new array
+5.Handling edge cases first
+  a.check whether the object is defined or not
+   - if it is not defined return undefined
+6.If it is defined then object key is checked with new array values iterated from for() loop and stored in a new variable
+7.Then the new variable which has the object value will be assigned to variable(k) which is created to store object.
+8.when for()loop ends function returns the object which is recently stored in a object variable(k). -->
+
+<script>
+  function findPath(obj, con) {
+    var k = obj;
+    var arr = con.split(".");
+    for (i = 0; i < arr.length; i++) {
+      if (k != undefined) {
+        var t = k[arr[i]];
+        k = t;
+      }
+    }
+    return k;
+  }
+  var obj = {
+    a: {
+      b: {
+        c: 12,
+        j: false,
+      },
+      k: null,
+    },
+  };
+  console.log(findPath(obj, "a.b"));
+</script>
